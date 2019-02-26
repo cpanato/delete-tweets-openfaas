@@ -1,0 +1,15 @@
+provider:
+  name: faas
+  gateway: http://127.0.0.1:8080
+functions:
+  delete-tweets-openfaas:
+    lang: go
+    handler: ./delete-tweets-openfaas
+    image: ctadeu/delete-tweets-openfaas:latest
+    environment:
+      TWEETS_IGNORE: "1080485345354303760,1080480453534533760"
+    secrets:
+      - twitter_api_secret
+      - twitter_access_token
+      - twitter_access_token_secret
+      - twitter_username
